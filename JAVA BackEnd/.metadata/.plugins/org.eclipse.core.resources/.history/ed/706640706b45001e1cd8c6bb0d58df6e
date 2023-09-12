@@ -1,0 +1,71 @@
+package com.example.Entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Cart")
+
+public class Cart {
+
+	private int CartID;
+	private int CustID;
+	
+	
+	private int Qty;
+	@Column(nullable=true)
+	private double TotalCost;
+	@Column(nullable=true)
+	private double DeliveryCharges;
+	
+	@Column(nullable=true)
+	private double totalBill;
+	
+	
+	
+	public double getTotalCost() {
+		return TotalCost;
+	}
+	public void setTotalCost(double totalCost) {
+		TotalCost = totalCost;
+	}
+	
+	public double getDeliveryCharges() {
+		return DeliveryCharges;
+	}
+	public void setDeliveryCharges(double deliveryCharges) {
+		DeliveryCharges = deliveryCharges;
+	}
+	
+	
+	
+	public double getTotalBill() {
+		return totalBill;
+	}
+	public void setTotalBill(double totalBill) {
+		this.totalBill = totalBill;
+	}
+	
+	@Id
+	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@Column(name = "cart_ID")
+	public int getCartID() {
+		return CartID;
+	}
+	
+	public void setCartID(int cartID) {
+		CartID = cartID;
+	}
+	
+	@Column(nullable=false)
+	public int getQty() {
+		return Qty;
+	}
+	public void setQty(int qty) {
+		Qty = qty;
+	}	
+	
+	
+	
+	
+	
+}

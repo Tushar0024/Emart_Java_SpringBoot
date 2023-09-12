@@ -1,0 +1,13 @@
+package com.example.Repositories;
+
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import com.example.Entity.Config;
+
+public interface ConfigRepository extends JpaRepository<Config, Integer> 
+{
+	
+}

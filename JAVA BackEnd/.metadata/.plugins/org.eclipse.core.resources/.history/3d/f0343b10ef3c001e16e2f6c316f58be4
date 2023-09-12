@@ -1,0 +1,54 @@
+package com.example.Controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.example.Entity.Config;
+import com.example.Services.ConfigService;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/api/Config")
+public class ConfigController 
+{
+	@Autowired
+	private ConfigService configService;
+	
+	@GetMapping
+	public List<Config> getAllConfigs(){
+		return configService.getAllConfigs();
+	}
+	
+	
+	@GetMapping("/{ConfigId}")
+	public Config getConfigId(@PathVariable int ConfigId) {
+		return configService.getConfigById(ConfigId);
+	}
+	
+	@PostMapping
+	public Config addConfig(@RequestBody Config Config) {
+		return configService.addConfig(Config);
+	}
+	
+	@PutMapping("/{ConfigId}")
+	public Config updateConfig(@PathVariable int ConfigId,@RequestBody Config updatedConfig) {
+		return configService.updateConfig(ConfigId,updatedConfig);
+		
+	}
+	
+	@DeleteMapping("/{ConfigId}")
+      public void deleteConfig(@PathVariable int ConfigId) {
+    	  configService.deleteConfig(ConfigId);
+      }
+	
+
+}

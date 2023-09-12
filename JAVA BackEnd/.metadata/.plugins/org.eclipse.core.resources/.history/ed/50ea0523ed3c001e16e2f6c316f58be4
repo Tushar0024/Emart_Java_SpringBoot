@@ -1,0 +1,11 @@
+package com.example.Repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import com.example.Entity.Invoice_details;
+
+public interface Invoice_detailsRepository extends JpaRepository<Invoice_details, Integer> 
+{
+
+}

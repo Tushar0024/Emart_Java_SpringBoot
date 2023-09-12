@@ -1,0 +1,38 @@
+package com.example.Entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Config")
+public class Config {
+  private int ConfigID;
+  private String ConfigName;
+  
+public Config(int configID, String configName) {
+	super();
+	ConfigID = configID;
+	ConfigName = configName;
+}
+
+
+
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+@Column(name = "Config_ID")
+public int getConfigID() {
+	return ConfigID;
+}
+public void setConfigID(int configID) {
+	ConfigID = configID;
+}
+
+@Column(name = "Config_Name", nullable = false)
+public String getConfigName() {
+	return ConfigName;
+}
+public void setConfigName(String configName) {
+	ConfigName = configName;
+}
+  
+  
+}

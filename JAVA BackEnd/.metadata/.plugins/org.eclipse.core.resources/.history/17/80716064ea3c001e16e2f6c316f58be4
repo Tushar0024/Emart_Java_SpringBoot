@@ -1,0 +1,55 @@
+package com.example.Controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.example.Entity.Category;
+import com.example.Services.CategoryService;
+
+
+@RestController
+@CrossOrigin
+@RequestMapping("/api/Category")
+public class CategoryController 
+{
+	@Autowired
+	private CategoryService categoryService ;
+	
+	@GetMapping
+	public List<Category> getAllCategorys(){
+		return categoryService.getAllCategorys();
+		}
+	
+	
+	@GetMapping("/{CategoryId}")
+	public Category getCategoryId(@PathVariable int CategoryId) {
+		return categoryService.getCategoryById(CategoryId);
+	}
+	
+	@PostMapping
+	public Category addCategory(@RequestBody Category Category) {
+		return categoryService.addCategory(Category);
+	}
+	
+	@PutMapping("/{CategoryId}")
+	public Category updateCategory(@PathVariable int CategoryId,@RequestBody Category updatedCategory) {
+		return categoryService.updateCategory(CategoryId, updatedCategory);
+		
+	}
+	
+	@DeleteMapping("/{CategoryId}")
+      public void deleteCategory(@PathVariable int CategoryId) {
+    	  categoryService.deleteCategory(CategoryId);
+      }
+	
+
+}

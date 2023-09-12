@@ -1,0 +1,116 @@
+package com.example.Entity;
+
+import java.util.List;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="Customer")
+public class Customer {
+	
+	private int CustID;
+	private String custName;
+	private String custAddress;
+	private String custPhone;
+	private String custEmail;
+	private String custPassword;
+	private boolean isCardHolder;
+	private int Points;
+	private Cart cart;
+	private List<Invoice> Ilist;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="cust_ID")
+	private List<Order> Olist;
+	
+	
+	
+	
+	@Id
+	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@Column(name = "cust_ID")
+	public int getCustID() {
+		return CustID;
+	}
+	public void setCustID(int custID) {
+		CustID = custID;
+	}
+	
+	@Column(name = "custName",nullable = false)
+	public String getCustName() {
+		return custName;
+	}
+	public void setCustName(String custName) {
+		this.custName = custName;
+	}
+	
+	@Column(name = "custAddress",nullable = false)
+	public String getCustAddress() {
+		return custAddress;
+	}
+	public void setCustAddress(String custAddress) {
+		this.custAddress = custAddress;
+	}
+	
+	@Column(name = "custPhone",nullable = false)
+	public String getCustPhone() {
+		return custPhone;
+	}
+	public void setCustPhone(String custPhone) {
+		this.custPhone = custPhone;
+	}
+	
+	@Column(name = "custEmail",nullable = false)
+	public String getCustEmail() {
+		return custEmail;
+	}
+	public void setCustEmail(String custEmail) {
+		this.custEmail = custEmail;
+	}
+	
+	@Column(name = "custPassword",nullable = false)
+	public String getCustPassword() {
+		return custPassword;
+	}
+	public void setCustPassword(String custPassword) {
+		this.custPassword = custPassword;
+	}
+	
+	@Column(name="isCardHolder",nullable=false)
+	public boolean isCardHolder() {
+		return isCardHolder;
+	}
+	public void setCardHolder(boolean isCardHolder) {
+		this.isCardHolder = isCardHolder;
+	}
+	
+	@Column(name = "Points",nullable = false)
+	public int getPoints() {
+		return Points;
+	}
+	public void setPoints(int points) {
+		Points = points;
+	}
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cust_ID")
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="cust_ID")
+	public List<Invoice> getIlist() {
+		return Ilist;
+	}
+	public void setIlist(List<Invoice> ilist) {
+		Ilist = ilist;
+	}
+
+	
+	
+	
+
+}

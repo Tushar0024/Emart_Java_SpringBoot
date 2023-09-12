@@ -1,0 +1,9 @@
+package com.example.Entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Order")
+public class Order {
+
+}

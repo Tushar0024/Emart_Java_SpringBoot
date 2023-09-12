@@ -1,0 +1,43 @@
+package com.example.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.Entity.Cart;
+import com.example.Services.CartService;
+
+@RestController
+@CrossOrigin
+public class CartController {
+
+	@Autowired
+	private CartService cartServ;
+	
+	@PostMapping("/cart/save")
+	public ResponseEntity<?> AddCart (@RequestBody Cart c){
+		return new ResponseEntity<> (cartServ.saveCart(c),HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/cart/get")
+	public ResponseEntity<?> getAllCart (){
+		return new ResponseEntity<> (cartServ.getAllCart(),HttpStatus.OK);
+	}
+	
+	@GetMapping("/cart/getID/{id}")
+	public ResponseEntity<?> getCartByID(@PathVariable int id){
+		return new ResponseEntity<> (cartServ.getCartById(id),HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/cart/delete/{id}")
+	public void deleteCart(@PathVariable int id){
+		cartServ.deleteCart(id);
+	}
+	
+	@PostMapping("/cart/edit/{id}")
+	public ResponseEntity<?> editCart (@RequestBody Cart c,@PathVariable int id){
+		return new ResponseEntity<> (cartServ.updateCart(c, id),HttpStatus.CREATED);
+	}
+	
+}

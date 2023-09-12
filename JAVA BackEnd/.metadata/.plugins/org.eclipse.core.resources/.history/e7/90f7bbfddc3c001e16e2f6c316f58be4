@@ -1,0 +1,13 @@
+package com.example.Services;
+
+import java.util.List;
+
+import com.example.Entity.Cart;
+
+public interface CartService {
+	public Cart saveCart(Cart obj);
+	public List<Cart> getAllCart();
+	public Cart getCartById(int id);
+	public void deleteCart(int id);
+	public Cart updateProduct(Cart c, int id);
+}

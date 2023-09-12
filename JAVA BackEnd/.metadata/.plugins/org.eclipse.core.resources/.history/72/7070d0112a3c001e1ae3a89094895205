@@ -1,0 +1,25 @@
+package com.example.Entity;
+
+import java.sql.Date;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Order")
+public class Order {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Order_ID")
+	private int OrderID;
+	private String ShippingAdd;
+	private Date OrderDate;
+	private Date Deliverydate;
+	private int CustID;
+	private int invoiceID;
+	
+
+	
+	
+	
+}
